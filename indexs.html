@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Comprehension - Bahasa Inggris Paket C Kelas X</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                        },
+                        accent: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="h-full font-sans text-slate-800 antialiased selection:bg-brand-500 selection:text-white flex flex-col min-h-screen">
+
+    <!-- Top Header -->
+    <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="goToStep(1)">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-accent-500 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-brand-500/20">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-slate-900 text-base leading-tight">Reading Comprehension</h1>
+                    <p class="text-xs text-slate-500 font-medium">Bahasa Inggris Paket C - Kelas X</p>
+                </div>
+            </div>
+
+            <!-- Global Score & Reference Text Drawer Button -->
+            <div class="flex items-center space-x-2">
+                <button id="textDrawerBtn" onclick="toggleTextDrawer()" class="hidden bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-lg transition border border-amber-300 flex items-center space-x-1.5 shadow-sm">
+                    <i class="fa-solid fa-file-lines text-amber-600"></i>
+                    <span>Baca Teks</span>
+                </button>
+                <div id="scoreBadge" class="hidden bg-brand-50 border border-brand-200 px-3 py-1.5 rounded-lg flex items-center space-x-1.5">
+                    <i class="fa-solid fa-star text-amber-500 text-xs"></i>
+                    <span class="text-xs text-brand-800 font-bold"><span id="userScore">0</span> Poin</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-slate-100 h-1.5">
+            <div id="progressBar" class="bg-gradient-to-r from-brand-500 to-accent-500 h-1.5 transition-all duration-500 rounded-r-full" style="width: 10%;"></div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-5xl w-full mx-auto p-4 md:p-6 flex flex-col justify-center">
+
+        <!-- STEP 1: HALAMAN PEMBUKA (HERO COVER) -->
+        <section id="step1" class="step-content">
+            <div class="bg-gradient-to-br from-white to-brand-50/50 rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-xl text-center relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-100/60 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute -left-10 -top-10 w-48 h-48 bg-accent-100/60 rounded-full blur-2xl pointer-events-none"></div>
+
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 text-brand-800 mb-4 border border-brand-200">
+                    <i class="fa-solid fa-graduation-cap mr-1.5"></i> Modul Interaktif Paket C Kelas X
+                </span>
+
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-3 tracking-tight">
+                    Reading Comprehension
+                </h2>
+                <p class="text-xl sm:text-2xl font-semibold text-brand-600 mb-4">
+                    Let's Understand English Texts!
+                </p>
+                <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+                    Selamat datang! Media pembelajaran ini dirancang khusus untuk membantu peserta didik Paket C memahami teks Bahasa Inggris secara mandiri, bertahap, dan menyenangkan. Mari tingkatkan kemampuan membaca Anda!
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="goToStep(2)" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white font-bold rounded-2xl shadow-lg shadow-brand-500/30 transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center space-x-2 text-lg">
+                        <span>Mulai Belajar Sekarang</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Info Badges -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-10 text-left pt-8 border-t border-slate-200/80">
+                    <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-bullseye"></i></div>
+                        <div><p class="text-xs text-slate-400">Tujuan</p><p class="text-xs font-bold text-slate-700">Terarah</p></div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-lightbulb"></i></div>
+                        <div><p class="text-xs text-slate-400">Strategi</p><p class="text-xs font-bold text-slate-700">6 Langkah</p></div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-layer-group"></i></div>
+                        <div><p class="text-xs text-slate-400">Latihan</p><p class="text-xs font-bold text-slate-700">3 Level</p></div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-trophy"></i></div>
+                        <div><p class="text-xs text-slate-400">Evaluasi</p><p class="text-xs font-bold text-slate-700">Mini Quiz</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 2: TUJUAN PEMBELAJARAN -->
+        <section id="step2" class="step-content hidden">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">Tujuan Pembelajaran</h3>
+                        <p class="text-xs text-slate-500">Apa yang akan Anda kuasai setelah mempelajari modul ini?</p>
+                    </div>
+                </div>
+
+                <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                    Setelah menyelesaikan kegiatan pembelajaran interaktif ini, Anda diharapkan mampu:
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                        <div class="w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</div>
+                        <p class="text-sm text-slate-700 font-medium leading-relaxed">Memahami isi teks Bahasa Inggris sederhana dengan topik kehidupan sehari-hari.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                        <div class="w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</div>
+                        <p class="text-sm text-slate-700 font-medium leading-relaxed">Menemukan gagasan utama (<em>main idea</em>) dari paragraf atau keseluruhan teks.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                        <div class="w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</div>
+                        <p class="text-sm text-slate-700 font-medium leading-relaxed">Menemukan informasi rinci (<em>specific information</em>) seperti waktu, fakta, dan nama.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                        <div class="w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</div>
+                        <p class="text-sm text-slate-700 font-medium leading-relaxed">Memahami arti kosakata baru berdasarkan konteks kalimat (<em>vocabulary in context</em>).</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                        <div class="w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">5</div>
+                        <p class="text-sm text-slate-700 font-medium leading-relaxed">Mengidentifikasi tujuan komunikatif teks (<em>communicative purpose</em>).</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start space-x-3">
+                        <div class="w-6 h-6 rounded-full bg-brand-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">6</div>
+                        <p class="text-sm text-slate-700 font-medium leading-relaxed">Membuat kesimpulan sederhana (<em>inference</em>) secara mandiri dan cermat.</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                    <button onclick="goToStep(1)" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition">
+                        <i class="fa-solid fa-arrow-left mr-1.5"></i> Kembali
+                    </button>
+                    <button onclick="goToStep(3)" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-brand-500/20">
+                        Lanjut ke Apersepsi <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 3: APERSEPSI (WARM UP) -->
+        <section id="step3" class="step-content hidden">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">Apersepsi / Warm Up</h3>
+                        <p class="text-xs text-slate-500">Mari sejenak merefleksikan kebiasaan membaca Anda sehari-hari!</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6 mb-8">
+                    <div class="bg-amber-50/60 rounded-2xl p-4 border border-amber-200/60">
+                        <h4 class="font-semibold text-slate-800 text-sm mb-3 flex items-center">
+                            <i class="fa-solid fa-comments text-amber-600 mr-2"></i> Pertanyaan Pemantik:
+                        </h4>
+                        <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
+                            <li>Apa yang biasanya Anda baca sehari-hari? (Pesan WhatsApp, artikel berita, instruksi kerja, resep, atau media sosial?)</li>
+                            <li>Apakah Anda menyukai cerita tentang gaya hidup sehat atau aktivitas harian orang lain?</li>
+                            <li>Informasi apa saja yang paling sering Anda cari saat membaca tulisan baru?</li>
+                        </ul>
+                    </div>
+
+                    <!-- Interactive Warm-up Activity -->
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-800 mb-2">
+                            Aktivitas Singkat: Apa jenis bacaan yang paling Sering Anda baca dalam Bahasa Indonesia/Inggris?
+                        </label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="warmupOptions">
+                            <button type="button" onclick="selectWarmupOption(this)" class="warmup-btn p-3 rounded-xl border border-slate-200 text-center text-xs font-semibold hover:border-brand-500 hover:bg-brand-50 transition">
+                                <i class="fa-solid fa-newspaper text-xl block mb-1 text-slate-500"></i> Berita/Artikel
+                            </button>
+                            <button type="button" onclick="selectWarmupOption(this)" class="warmup-btn p-3 rounded-xl border border-slate-200 text-center text-xs font-semibold hover:border-brand-500 hover:bg-brand-50 transition">
+                                <i class="fa-solid fa-mobile-screen text-xl block mb-1 text-slate-500"></i> Medsos & Pesan
+                            </button>
+                            <button type="button" onclick="selectWarmupOption(this)" class="warmup-btn p-3 rounded-xl border border-slate-200 text-center text-xs font-semibold hover:border-brand-500 hover:bg-brand-50 transition">
+                                <i class="fa-solid fa-book text-xl block mb-1 text-slate-500"></i> Buku & Cerita
+                            </button>
+                            <button type="button" onclick="selectWarmupOption(this)" class="warmup-btn p-3 rounded-xl border border-slate-200 text-center text-xs font-semibold hover:border-brand-500 hover:bg-brand-50 transition">
+                                <i class="fa-solid fa-briefcase text-xl block mb-1 text-slate-500"></i> Panduan Kerja
+                            </button>
+                        </div>
+                        <p id="warmupFeedback" class="text-xs text-brand-700 mt-2 font-medium hidden flex items-center">
+                            <i class="fa-solid fa-circle-check mr-1.5"></i> Bagus sekali! Semua jenis bacaan tersebut membutuhkan kemampuan memahami teks yang baik.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                    <button onclick="goToStep(2)" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition">
+                        <i class="fa-solid fa-arrow-left mr-1.5"></i> Kembali
+                    </button>
+                    <button onclick="goToStep(4)" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-brand-500/20">
+                        Pelajari Strategi Membaca <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 4: MATERI SINGKAT & STRATEGI MEMBACA -->
+        <section id="step4" class="step-content hidden">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-accent-100 text-accent-700 flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">Strategi Membaca Cerdas (Reading Strategies)</h3>
+                        <p class="text-xs text-slate-500">6 Langkah MUDAH untuk memahami teks Bahasa Inggris secara efektif</p>
+                    </div>
+                </div>
+
+                <!-- Strategy Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                    <!-- Step 1 -->
+                    <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200/70 hover:shadow-md transition">
+                        <div class="flex items-center space-x-2 text-blue-700 font-bold text-sm mb-1">
+                            <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs">1</span>
+                            <span>PREVIEW</span>
+                        </div>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            Lihat judul, gambar, dan bentuk paragraf sepintas sebelum mulai membaca secara penuh.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/70 hover:shadow-md transition">
+                        <div class="flex items-center space-x-2 text-emerald-700 font-bold text-sm mb-1">
+                            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs">2</span>
+                            <span>PREDICT</span>
+                        </div>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            Tebak atau perkirakan topik bacaan berdasarkan judul dan kata yang sering muncul.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200/70 hover:shadow-md transition">
+                        <div class="flex items-center space-x-2 text-amber-700 font-bold text-sm mb-1">
+                            <span class="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs">3</span>
+                            <span>READ</span>
+                        </div>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            Baca teks dengan teliti. Jangan khawatir jika ada 1-2 kata asing yang belum diketahui.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-200/70 hover:shadow-md transition">
+                        <div class="flex items-center space-x-2 text-purple-700 font-bold text-sm mb-1">
+                            <span class="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs">4</span>
+                            <span>FIND INFO</span>
+                        </div>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            Cari kata kunci (nama, angka, waktu) untuk menjawab pertanyaan spesifik.
+                        </p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="p-4 rounded-2xl bg-rose-50/70 border border-rose-200/70 hover:shadow-md transition">
+                        <div class="flex items-center space-x-2 text-rose-700 font-bold text-sm mb-1">
+                            <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs">5</span>
+                            <span>UNDERSTAND</span>
+                        </div>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            Tebak arti kata sulit dengan melihat konteks kata-kata lain di sekitarnya.
+                        </p>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="p-4 rounded-2xl bg-teal-50/70 border border-teal-200/70 hover:shadow-md transition">
+                        <div class="flex items-center space-x-2 text-teal-700 font-bold text-sm mb-1">
+                            <span class="w-6 h-6 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs">6</span>
+                            <span>SUMMARIZE</span>
+                        </div>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            Simpulkan gagasan utama (<em>main idea</em>) dari setiap paragraf secara ringkas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                    <button onclick="goToStep(3)" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition">
+                        <i class="fa-solid fa-arrow-left mr-1.5"></i> Kembali
+                    </button>
+                    <button onclick="goToStep(5)" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-brand-500/20">
+                        Buka Teks Bacaan Utama <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 5: READING TEXT & VOCABULARY -->
+        <section id="step5" class="step-content hidden">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg">
+                <!-- Text Header with Audio Speech Synthesis -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200">
+                    <div>
+                        <span class="inline-block px-2.5 py-0.5 rounded-md text-xs font-semibold bg-emerald-100 text-emerald-800 mb-1">Level: A1-A2 CEFR</span>
+                        <h3 class="text-2xl font-bold text-slate-900" id="mainTextTitle">Siti's Healthy Routine: Work, Study, and Stay Fit</h3>
+                    </div>
+                    <button onclick="toggleAudioSpeech()" id="audioBtn" class="inline-flex items-center justify-center space-x-2 bg-slate-100 hover:bg-brand-100 hover:text-brand-700 px-4 py-2 rounded-xl text-slate-700 text-xs font-semibold transition border border-slate-200">
+                        <i class="fa-solid fa-volume-high text-brand-600 text-base"></i>
+                        <span id="audioBtnText">Dengarkan Teks (Audio)</span>
+                    </button>
+                </div>
+
+                <!-- Paragraphs -->
+                <div class="space-y-4 text-slate-700 text-base leading-relaxed bg-slate-50/50 p-5 rounded-2xl border border-slate-200/80 mb-8 font-serif" id="readingTextBody">
+                    <p class="p-3 bg-white rounded-xl border border-slate-200/60 shadow-2xs relative">
+                        <span class="absolute -left-3 top-3 text-[10px] bg-brand-600 text-white px-1.5 py-0.5 rounded-full font-sans font-bold">P1</span>
+                        Siti is a 25-year-old student in Paket C. She works at a local bakery in the morning and studies English in the evening. Even though she has a busy schedule, Siti always <mark class="bg-amber-200 px-1 rounded">prioritizes</mark> her health and <mark class="bg-amber-200 px-1 rounded">well-being</mark>.
+                    </p>
+                    <p class="p-3 bg-white rounded-xl border border-slate-200/60 shadow-2xs relative">
+                        <span class="absolute -left-3 top-3 text-[10px] bg-brand-600 text-white px-1.5 py-0.5 rounded-full font-sans font-bold">P2</span>
+                        Every morning at 5:30 AM, Siti drinks a large glass of water and does light stretching exercises for 15 minutes. She eats a simple, healthy breakfast like oatmeal with fruit or boiled eggs before going to work. "A <mark class="bg-amber-200 px-1 rounded">nutritious</mark> breakfast gives me <mark class="bg-amber-200 px-1 rounded">energy</mark> for the whole day," says Siti.
+                    </p>
+                    <p class="p-3 bg-white rounded-xl border border-slate-200/60 shadow-2xs relative">
+                        <span class="absolute -left-3 top-3 text-[10px] bg-brand-600 text-white px-1.5 py-0.5 rounded-full font-sans font-bold">P3</span>
+                        At night, after finishing her work and study modules, Siti turns off her smartphone 30 minutes before bedtime. Reading a printed book helps her relax and fall asleep easily. She believes that good sleep, healthy food, and daily exercise are key to <mark class="bg-amber-200 px-1 rounded">manage</mark> work and study effectively.
+                    </p>
+                </div>
+
+                <!-- Vocabulary List -->
+                <div class="bg-amber-50/80 rounded-2xl p-5 border border-amber-200/80 mb-8">
+                    <h4 class="font-bold text-amber-900 text-sm mb-3 flex items-center">
+                        <i class="fa-solid fa-book-bookmark text-amber-600 mr-2"></i> Key Vocabulary (Kosakata Penting):
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                        <div class="bg-white p-2.5 rounded-xl border border-amber-200/60 text-xs">
+                            <span class="font-bold text-amber-800">prioritize</span> <span class="text-slate-500">(verb)</span>: mengutamakan
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-amber-200/60 text-xs">
+                            <span class="font-bold text-amber-800">well-being</span> <span class="text-slate-500">(noun)</span>: kesehatan/kesejahteraan
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-amber-200/60 text-xs">
+                            <span class="font-bold text-amber-800">nutritious</span> <span class="text-slate-500">(adj)</span>: bergizi
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-amber-200/60 text-xs">
+                            <span class="font-bold text-amber-800">energy</span> <span class="text-slate-500">(noun)</span>: tenaga/energi
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-amber-200/60 text-xs">
+                            <span class="font-bold text-amber-800">manage</span> <span class="text-slate-500">(verb)</span>: mengelola / mengatur
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-amber-200/60 text-xs">
+                            <span class="font-bold text-amber-800">schedule</span> <span class="text-slate-500">(noun)</span>: jadwal
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+                    <button onclick="goToStep(4)" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition">
+                        <i class="fa-solid fa-arrow-left mr-1.5"></i> Kembali
+                    </button>
+                    <button onclick="goToStep(6)" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-brand-500/20">
+                        Mulai Latihan Interaktif <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 6: INTERACTIVE READING ACTIVITIES & LEVEL CHALLENGES -->
+        <section id="step6" class="step-content hidden">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg">
+                <!-- Level Tabs -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-200">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">Latihan Interaktif (Practice Levels)</h3>
+                        <p class="text-xs text-slate-500">Pilih level untuk melatih pemahaman Anda secara bertahap</p>
+                    </div>
+                    <div class="flex space-x-1.5 bg-slate-100 p-1 rounded-xl">
+                        <button onclick="switchLevel(1)" id="levelBtn1" class="level-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold transition bg-white text-brand-700 shadow-2xs">
+                            Level 1: Easy
+                        </button>
+                        <button onclick="switchLevel(2)" id="levelBtn2" class="level-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900">
+                            Level 2: Medium
+                        </button>
+                        <button onclick="switchLevel(3)" id="levelBtn3" class="level-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900">
+                            Level 3: Challenge
+                        </button>
+                    </div>
+                </div>
+
+                <!-- LEVEL 1 CONTENT: MAIN IDEA & TRUE/FALSE -->
+                <div id="level1Container" class="level-container space-y-8">
+                    <!-- Activity A: Main Idea -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <span class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-100 text-blue-800 mb-2">A. Main Idea (Gagasan Utama)</span>
+                        <h4 class="font-bold text-slate-800 text-sm mb-3">
+                            1. Apa gagasan utama (Main Idea) dari keseluruhan teks di atas?
+                        </h4>
+                        <div class="space-y-2" id="q_level1_1">
+                            <button onclick="checkAnswer('l1_q1', 'a', false, 'Petunjuk: Perhatikan paragraf 1 hingga 3. Apakah fokus utama hanya tentang pekerjaan roti Siti?')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                A. Siti works at a local bakery every morning.
+                            </button>
+                            <button onclick="checkAnswer('l1_q1', 'b', true, 'Good Job! Teks menceritakan bagaimana Siti mengimbangi kerja, belajar, dan pola hidup sehat.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                B. Siti manages her busy work and study schedule with a healthy routine.
+                            </button>
+                            <button onclick="checkAnswer('l1_q1', 'c', false, 'Petunjuk: Smart phone hanya dibahas singkat di paragraf 3. Cari yang mencakup seluruh isi bacaan.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                C. Siti turns off her smartphone before going to bed.
+                            </button>
+                        </div>
+                        <div id="fb_l1_q1" class="mt-3 hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+
+                    <!-- Activity B: True or False -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <span class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-amber-100 text-amber-800 mb-2">B. True or False (Benar atau Salah)</span>
+                        
+                        <div class="space-y-4">
+                            <!-- TF Question 1 -->
+                            <div>
+                                <p class="font-semibold text-slate-800 text-sm mb-2">2. Siti does light stretching exercises for 15 minutes every morning.</p>
+                                <div class="flex space-x-3" id="q_l1_tf1">
+                                    <button onclick="checkAnswer('l1_tf1', 'true', true, 'Great thinking! Paragraf 2 menyatakan: ...does light stretching exercises for 15 minutes.')" class="px-5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50 hover:border-emerald-400 text-xs font-bold text-slate-700 transition">
+                                        TRUE (Benar)
+                                    </button>
+                                    <button onclick="checkAnswer('l1_tf1', 'false', false, 'Petunjuk: Coba baca kembali paragraf 2 baris pertama.')" class="px-5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-rose-50 hover:border-rose-400 text-xs font-bold text-slate-700 transition">
+                                        FALSE (Salah)
+                                    </button>
+                                </div>
+                                <div id="fb_l1_tf1" class="mt-2 hidden p-2.5 rounded-xl text-xs font-medium"></div>
+                            </div>
+
+                            <!-- TF Question 2 -->
+                            <div class="pt-3 border-t border-slate-200">
+                                <p class="font-semibold text-slate-800 text-sm mb-2">3. Siti plays with her smartphone until she falls asleep at night.</p>
+                                <div class="flex space-x-3" id="q_l1_tf2">
+                                    <button onclick="checkAnswer('l1_tf2', 'true', false, 'Petunjuk: Baca paragraf 3. Apakah Siti main smartphone hingga tertidur, atau mematikannya?')" class="px-5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-rose-50 hover:border-rose-400 text-xs font-bold text-slate-700 transition">
+                                        TRUE (Benar)
+                                    </button>
+                                    <button onclick="checkAnswer('l1_tf2', 'false', true, 'Awesome! Siti mematikan smartphonenya 30 menit sebelum tidur.')" class="px-5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-emerald-50 hover:border-emerald-400 text-xs font-bold text-slate-700 transition">
+                                        FALSE (Salah)
+                                    </button>
+                                </div>
+                                <div id="fb_l1_tf2" class="mt-2 hidden p-2.5 rounded-xl text-xs font-medium"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LEVEL 2 CONTENT: VOCABULARY IN CONTEXT & FIND INFORMATION -->
+                <div id="level2Container" class="level-container space-y-8 hidden">
+                    <!-- Activity C: Vocabulary in Context -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <span class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-purple-100 text-purple-800 mb-2">C. Vocabulary in Context</span>
+                        <h4 class="font-bold text-slate-800 text-sm mb-3">
+                            1. Apa arti kata "<span class="text-brand-600">nutritious</span>" dalam kalimat <em>"A nutritious breakfast gives me energy..."</em>?
+                        </h4>
+                        <div class="space-y-2" id="q_level2_1">
+                            <button onclick="checkAnswer('l2_q1', 'a', false, 'Petunjuk: Breakfast yang sehat dan memberi tenaga biasanya adalah makanan yang bergizi, bukan manis.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                A. Makanan yang manis dan lezat
+                            </button>
+                            <button onclick="checkAnswer('l2_q1', 'b', true, 'Spot on! Nutritious berarti bergizi atau mengandung nutrisi baik untuk tubuh.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                B. Makanan yang sehat dan kaya gizi
+                            </button>
+                            <button onclick="checkAnswer('l2_q1', 'c', false, 'Petunjuk: Lihat kembali daftar kosakata penting di bawah teks bacaan.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                C. Makanan yang mahal dan mewah
+                            </button>
+                        </div>
+                        <div id="fb_l2_q1" class="mt-3 hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+
+                    <!-- Activity D: Sequence / Ordering -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <span class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-teal-100 text-teal-800 mb-2">D. Arrange Information (Urutkan Kejadian)</span>
+                        <p class="font-semibold text-slate-800 text-sm mb-3">
+                            2. Urutkan rutinitas pagi Siti secara benar dari awal hingga berangkat kerja!
+                        </p>
+                        
+                        <div class="space-y-2 text-xs font-medium text-slate-700 mb-4 bg-white p-3 rounded-xl border border-slate-200">
+                            <p>1. Eats a nutritious breakfast (oatmeal/eggs)</p>
+                            <p>2. Drinks a large glass of water at 5:30 AM</p>
+                            <p>3. Does light stretching exercises for 15 minutes</p>
+                        </div>
+
+                        <div class="space-y-2" id="q_level2_seq">
+                            <button onclick="checkAnswer('l2_seq', 'a', false, 'Petunjuk: Apa hal PERTAMA yang dilakukan Siti tepat pukul 5:30 pagi pada Paragraf 2?')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                Urutan: 1 - 2 - 3
+                            </button>
+                            <button onclick="checkAnswer('l2_seq', 'b', true, 'Excellent! Pertama minum air (2), lalu olahraga ringan (3), baru sarapan sehat (1).')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                Urutan: 2 - 3 - 1
+                            </button>
+                            <button onclick="checkAnswer('l2_seq', 'c', false, 'Petunjuk: Cek paragraf 2: Siti minum air putih terlebih dahulu sebelum olahraga.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                Urutan: 3 - 1 - 2
+                            </button>
+                        </div>
+                        <div id="fb_l2_seq" class="mt-3 hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+                </div>
+
+                <!-- LEVEL 3 CONTENT: INFERENCE & COMMUNICATIVE PURPOSE -->
+                <div id="level3Container" class="level-container space-y-8 hidden">
+                    <!-- Activity E: Inference -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <span class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-indigo-100 text-indigo-800 mb-2">E. Simple Inference (Kesimpulan Sederhana)</span>
+                        <h4 class="font-bold text-slate-800 text-sm mb-3">
+                            1. Mengapa membaca buku cetak sebelum tidur membantu Siti mudah tertidur?
+                        </h4>
+                        <div class="space-y-2" id="q_level3_1">
+                            <button onclick="checkAnswer('l3_q1', 'a', true, 'Great critical thinking! Menjauh dari layar HP dan membaca buku membuat pikiran rileks.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                A. Membaca buku cetak merilekskan pikiran dan mengurangi paparan layar smartphone.
+                            </button>
+                            <button onclick="checkAnswer('l3_q1', 'b', false, 'Petunjuk: Teks menyebutkan buku membantunya rileks, bukan karena bukunya membosankan.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                B. Karena buku cetak sangat membosankan sehingga membuat mengantuk.
+                            </button>
+                            <button onclick="checkAnswer('l3_q1', 'c', false, 'Petunjuk: Coba hubungkan aksi mematikan HP dengan membaca buku cetak pada Paragraf 3.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                C. Karena Siti tidak suka membaca di malam hari.
+                            </button>
+                        </div>
+                        <div id="fb_l3_q1" class="mt-3 hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+
+                    <!-- Activity F: Communicative Purpose -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <span class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-rose-100 text-rose-800 mb-2">F. Communicative Purpose (Tujuan Teks)</span>
+                        <h4 class="font-bold text-slate-800 text-sm mb-3">
+                            2. Apa tujuan penulis menyajikan teks tentang Siti ini kepada pembaca?
+                        </h4>
+                        <div class="space-y-2" id="q_level3_2">
+                            <button onclick="checkAnswer('l3_q2', 'a', false, 'Petunjuk: Teks ini menceritakan kisah inspiratif Siti, bukan mempromosikan roti.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                A. Untuk mempromosikan toko roti tempat Siti bekerja.
+                            </button>
+                            <button onclick="checkAnswer('l3_q2', 'b', true, 'You nailed it! Teks ini bertujuan menginspirasi pembaca tentang mengelola pola hidup sehat.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                B. Untuk menginspirasi pembaca bagaimana menjaga kesehatan di tengah kesibukan.
+                            </button>
+                            <button onclick="checkAnswer('l3_q2', 'c', false, 'Petunjuk: Baca kembali pesan utama dari teks ini.')" class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-brand-50 hover:border-brand-300 text-sm transition">
+                                C. Untuk melarang orang menggunakan smartphone sama sekali.
+                            </button>
+                        </div>
+                        <div id="fb_l3_q2" class="mt-3 hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+                </div>
+
+                <!-- Footer Navigation -->
+                <div class="flex justify-between items-center pt-6 mt-6 border-t border-slate-100">
+                    <button onclick="goToStep(5)" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition">
+                        <i class="fa-solid fa-arrow-left mr-1.5"></i> Baca Teks Lagi
+                    </button>
+                    <button onclick="goToStep(7)" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl text-sm transition shadow-md shadow-brand-500/20">
+                        Siap untuk Mini Quiz <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 7: MINI QUIZ (EVALUASI AKHIR - 10 SOAL) -->
+        <section id="step7" class="step-content hidden">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-200">
+                    <div>
+                        <span class="inline-block px-2.5 py-0.5 rounded-md text-xs font-bold bg-purple-100 text-purple-800 mb-1">Evaluasi Akhir</span>
+                        <h3 class="text-xl font-bold text-slate-900">Mini Quiz: Reading Comprehension</h3>
+                    </div>
+                    <div class="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
+                        <i class="fa-solid fa-clock mr-1 text-slate-400"></i> Total: 10 Soal Multi-Domain
+                    </div>
+                </div>
+
+                <!-- Quiz Form -->
+                <form id="quizForm" onsubmit="submitQuiz(event)" class="space-y-6">
+                    
+                    <!-- Q1 Main Idea -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-blue-600 mb-2">
+                            <span>[SOAL 1] Main Idea</span>
+                        </div>
+                        <p class="font-semibold text-slate-800 text-sm mb-3">
+                            What is the main topic of paragraph 1?
+                        </p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q1" value="A" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. Siti's age and her family background.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q1" value="B" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. Siti's daily busy activities and how she prioritizes health.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q1" value="C" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. The price of bread at the local bakery.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q2 Main Idea -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-blue-600 mb-2">
+                            <span>[SOAL 2] Main Idea</span>
+                        </div>
+                        <p class="font-semibold text-slate-800 text-sm mb-3">
+                            Paragraph 2 mainly discusses...
+                        </p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q2" value="A" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. Siti's morning healthy habits and breakfast routines.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q2" value="B" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. How to cook delicious boiled eggs.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q2" value="C" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. The distance from Siti's house to her workplace.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q3 Main Idea -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-blue-600 mb-2">
+                            <span>[SOAL 3] Main Idea</span>
+                        </div>
+                        <p class="font-semibold text-slate-800 text-sm mb-3">
+                            What is the overall message of paragraph 3?
+                        </p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q3" value="A" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. Nighttime routines to relax and achieve good rest.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q3" value="B" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. How to buy smartphones online.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q3" value="C" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. Siti's English learning syllabus.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q4 Specific Info -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-emerald-600 mb-2">
+                            <span>[SOAL 4] Specific Information</span>
+                        </div>
+                        <p class="font-semibold text-slate-800 text-sm mb-3">
+                            Where does Siti work in the morning?
+                        </p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q4" value="A" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. At a local hospital.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q4" value="B" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. At a local bakery.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q4" value="C" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. At a language school.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q5 Specific Info -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-emerald-600 mb-2">
+                            <span>[SOAL 5] Specific Information</span>
+                        </div>
+                        <p class="font-semibold text-slate-800 text-sm mb-3">
+                            What time does Siti wake up and start her morning hydration?
+                        </p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q5" value="A" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. 5:30 AM</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q5" value="B" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. 6:30 AM</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q5" value="C" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. 7:00 AM</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q6 Specific Info -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-emerald-600 mb-2">
+                            <span>[SOAL 6] Specific Information</span>
+                        </div>
+                        <p class="font-semibold text-slate-800 text-sm mb-3">
+                            How many minutes before bedtime does Siti turn off her smartphone?
+                        </p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q6" value="A" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. 15 minutes</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q6" value="B" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. 30 minutes</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q6" value="C" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. 60 minutes</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q7 Vocabulary -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-purple-600 mb-2">
+                            <span>[SOAL 7] Vocabulary in Context</span>
+                        </div>
+                        <p class="font-semibold text-slate-800 text-sm mb-3">
+                            The word "<strong>prioritizes</strong>" in paragraph 1 means...
+                        </p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q7" value="A" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. Put as the most important thing (mengutamakan).</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q7" value="B" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. Ignore or forget (mengabaikan).</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q7" value="C" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. Delay until next week (menunda).</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q8 Vocabulary -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-purple-600 mb-2">
+                            <span>[SOAL 8] Vocabulary in Context</span>
+                        </div>
+                        <p class="font-semibold text-slate-800 text-sm mb-3">
+                            The word "<strong>manage</strong>" in paragraph 3 is closest in meaning to...
+                        </p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q8" value="A" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. Organize or handle effectively (mengelola/mengatur).</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q8" value="B" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. Stop or destroy (menghentikan).</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q8" value="C" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. Sell to someone else (menjual).</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q9 Inference -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-indigo-600 mb-2">
+                            <span>[SOAL 9] Inference</span>
+                        </div>
+                        <p class="font-semibold text-slate-800 text-sm mb-3">
+                            What can we infer about Siti's attitude towards health?
+                        </p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q9" value="A" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. She believes health requires discipline and simple daily habits.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q9" value="B" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. She thinks health is only for rich people.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q9" value="C" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. She only cares about health when she gets sick.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q10 Communicative Purpose -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-rose-600 mb-2">
+                            <span>[SOAL 10] Communicative Purpose</span>
+                        </div>
+                        <p class="font-semibold text-slate-800 text-sm mb-3">
+                            What is the main purpose of this text?
+                        </p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q10" value="A" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. To describe how a Paket C student balances work, study, and health.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q10" value="B" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. To persuade readers to quit working at bakeries.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-brand-300 cursor-pointer text-xs">
+                                <input type="radio" name="quiz_q10" value="C" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. To teach readers how to fix smartphones.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-200">
+                        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-brand-600 to-accent-600 hover:from-brand-700 hover:to-accent-700 text-white font-bold rounded-xl shadow-lg transition text-sm flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Kirim Jawaban & Lihat Hasil</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- STEP 8: HASIL BELAJAR (SCORE SUMMARY) -->
+        <section id="step8" class="step-content hidden">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg text-center">
+                <div class="w-16 h-16 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4" id="resultIcon">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+
+                <h3 class="text-2xl font-extrabold text-slate-900 mb-1" id="resultCategory">Sangat Baik!</h3>
+                <p class="text-xs text-slate-500 mb-6" id="resultSubtext">Berikut adalah rangkuman pencapaian membaca Anda hari ini:</p>
+
+                <!-- Score Stats Card -->
+                <div class="grid grid-cols-3 gap-3 max-w-md mx-auto mb-6">
+                    <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+                        <p class="text-[10px] text-slate-400 uppercase font-bold">Benar</p>
+                        <p class="text-2xl font-extrabold text-brand-600" id="correctCount">0/10</p>
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+                        <p class="text-[10px] text-slate-400 uppercase font-bold">Skor</p>
+                        <p class="text-2xl font-extrabold text-slate-800" id="finalScore">0</p>
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+                        <p class="text-[10px] text-slate-400 uppercase font-bold">Persentase</p>
+                        <p class="text-2xl font-extrabold text-accent-600" id="percentage">0%</p>
+                    </div>
+                </div>
+
+                <!-- Motivation Box -->
+                <div class="bg-brand-50/80 p-4 rounded-2xl border border-brand-200 max-w-lg mx-auto mb-8 text-left">
+                    <h4 class="font-bold text-brand-900 text-xs mb-1 flex items-center">
+                        <i class="fa-solid fa-heart text-brand-600 mr-1.5"></i> Pesan Motivasi:
+                    </h4>
+                    <p class="text-xs text-brand-800 leading-relaxed" id="motivationalMessage">
+                        Selamat! Anda telah belajar memahami teks Bahasa Inggris dengan sangat gigih. Setiap langkah membaca membawa Anda lebih dekat pada keberhasilan!
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-3">
+                    <button onclick="goToStep(6)" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Review Latihan
+                    </button>
+                    <button onclick="goToStep(9)" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl text-xs transition shadow-md">
+                        Isi Refleksi Pembelajaran <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 9: REFLEKSI PEMBELAJARAN -->
+        <section id="step9" class="step-content hidden">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">Refleksi Pembelajaran</h3>
+                        <p class="text-xs text-slate-500">Mari luangkan waktu sejenak untuk mengingat apa yang telah dipelajari</p>
+                    </div>
+                </div>
+
+                <form onsubmit="finishReflection(event)" class="space-y-5">
+                    <!-- Q1 -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-2">1. Apa hal paling menarik yang Anda pelajari hari ini?</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <label class="p-2.5 rounded-xl border border-slate-200 hover:bg-brand-50 flex items-center space-x-2 cursor-pointer">
+                                <input type="checkbox" name="ref1" value="main_idea" class="rounded text-brand-600">
+                                <span>Menemukan Gagasan Utama (Main Idea)</span>
+                            </label>
+                            <label class="p-2.5 rounded-xl border border-slate-200 hover:bg-brand-50 flex items-center space-x-2 cursor-pointer">
+                                <input type="checkbox" name="ref1" value="vocab" class="rounded text-brand-600">
+                                <span>Belajar Kosakata Baru (Vocabulary)</span>
+                            </label>
+                            <label class="p-2.5 rounded-xl border border-slate-200 hover:bg-brand-50 flex items-center space-x-2 cursor-pointer">
+                                <input type="checkbox" name="ref1" value="strategy" class="rounded text-brand-600">
+                                <span>6 Strategi Membaca Cerdas</span>
+                            </label>
+                            <label class="p-2.5 rounded-xl border border-slate-200 hover:bg-brand-50 flex items-center space-x-2 cursor-pointer">
+                                <input type="checkbox" name="ref1" value="routine" class="rounded text-brand-600">
+                                <span>Tips Gaya Hidup Sehat Siti</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-2">2. Menurut Anda, bagian mana yang paling MUDAH dipahami?</label>
+                        <select class="w-full p-2.5 rounded-xl border border-slate-200 text-xs bg-white focus:ring-brand-500">
+                            <option>Mencari informasi rinci (Specific Information)</option>
+                            <option>Menebak arti kata berdasarkan konteks</option>
+                            <option>Menentukan gagasan utama paragraf</option>
+                            <option>Mendengarkan bacaan (Audio Reading)</option>
+                        </select>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-2">3. Strategi membaca mana yang akan paling sering Anda gunakan berikutnya?</label>
+                        <select class="w-full p-2.5 rounded-xl border border-slate-200 text-xs bg-white focus:ring-brand-500">
+                            <option>Preview & Predict (Melihat sepintas dan menebak isi)</option>
+                            <option>Find Information (Mencari kata kunci spesifik)</option>
+                            <option>Understand Context (Menebak arti kata dari konteks)</option>
+                            <option>Summarize (Membuat kesimpulan singkat)</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex justify-end">
+                        <button type="submit" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-xs transition shadow-md">
+                            Selesaikan & Simpan <i class="fa-solid fa-check ml-1.5"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div id="reflectionSuccess" class="hidden mt-4 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-center">
+                    <p class="text-xs font-bold text-emerald-800 mb-1">Terima Kasih Atas Refleksi Anda!</p>
+                    <p class="text-[11px] text-emerald-600">Anda telah menyelesaikan seluruh rangkaian kegiatan pembelajaran Reading Comprehension ini dengan sangat baik.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Drawer Slide-over Teks Bacaan (Acuan saat Latihan) -->
+    <div id="textDrawer" class="fixed inset-y-0 right-0 max-w-md w-full bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out border-l border-slate-200 flex flex-col">
+        <div class="p-4 bg-slate-900 text-white flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-file-lines text-amber-400"></i>
+                <h4 class="font-bold text-sm">Teks Bacaan Acuan</h4>
+            </div>
+            <button onclick="toggleTextDrawer()" class="text-slate-400 hover:text-white p-1">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+        <div class="p-5 overflow-y-auto custom-scrollbar flex-grow space-y-4 text-xs leading-relaxed text-slate-700">
+            <h5 class="font-bold text-slate-900 text-sm">Siti's Healthy Routine: Work, Study, and Stay Fit</h5>
+            <p class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                <strong>[P1]</strong> Siti is a 25-year-old student in Paket C. She works at a local bakery in the morning and studies English in the evening. Even though she has a busy schedule, Siti always prioritizes her health and well-being.
+            </p>
+            <p class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                <strong>[P2]</strong> Every morning at 5:30 AM, Siti drinks a large glass of water and does light stretching exercises for 15 minutes. She eats a simple, healthy breakfast like oatmeal with fruit or boiled eggs before going to work. "A nutritious breakfast gives me energy for the whole day," says Siti.
+            </p>
+            <p class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                <strong>[P3]</strong> At night, after finishing her work and study modules, Siti turns off her smartphone 30 minutes before bedtime. Reading a printed book helps her relax and fall asleep easily. She believes that good sleep, healthy food, and daily exercise are key to manage work and study effectively.
+            </p>
+            <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 font-sans">
+                <p class="font-bold text-amber-900 text-[11px] mb-1">Glosarium Singkat:</p>
+                <ul class="space-y-1 text-[11px] text-amber-800">
+                    <li>• <strong>prioritize:</strong> mengutamakan</li>
+                    <li>• <strong>well-being:</strong> kesehatan/kesejahteraan</li>
+                    <li>• <strong>nutritious:</strong> bergizi</li>
+                    <li>• <strong>manage:</strong> mengelola</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Application State
+        let currentStep = 1;
+        let score = 0;
+        let speechUtterance = null;
+        let isSpeaking = false;
+
+        // Navigation Function
+        function goToStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
+
+            // Show current step
+            const targetStep = document.getElementById(`step${stepNumber}`);
+            if (targetStep) {
+                targetStep.classList.remove('hidden');
+                currentStep = stepNumber;
+            }
+
+            // Update progress bar
+            const totalSteps = 9;
+            const progressPercent = Math.round((stepNumber / totalSteps) * 100);
+            document.getElementById('progressBar').style.width = `${progressPercent}%`;
+
+            // Toggle Text Drawer button visibility (visible from Step 5 onwards)
+            const textDrawerBtn = document.getElementById('textDrawerBtn');
+            const scoreBadge = document.getElementById('scoreBadge');
+            
+            if (stepNumber >= 5) {
+                textDrawerBtn.classList.remove('hidden');
+                scoreBadge.classList.remove('hidden');
+            } else {
+                textDrawerBtn.classList.add('hidden');
+                scoreBadge.classList.add('hidden');
+            }
+
+            // Stop speech synthesis if changing steps
+            if (isSpeaking) {
+                stopSpeech();
+            }
+
+            // Scroll smoothly to top of window
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Warmup selection function
+        function selectWarmupOption(btnElement) {
+            document.querySelectorAll('.warmup-btn').forEach(btn => {
+                btn.classList.remove('border-brand-500', 'bg-brand-50', 'text-brand-700');
+            });
+            btnElement.classList.add('border-brand-500', 'bg-brand-50', 'text-brand-700');
+            document.getElementById('warmupFeedback').classList.remove('hidden');
+        }
+
+        // Toggle Drawer
+        function toggleTextDrawer() {
+            const drawer = document.getElementById('textDrawer');
+            if (drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+            } else {
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        // Level Switcher in Step 6
+        function switchLevel(levelNum) {
+            // Hide all levels
+            document.querySelectorAll('.level-container').forEach(el => el.classList.add('hidden'));
+            
+            // Show selected level
+            document.getElementById(`level${levelNum}Container`).classList.remove('hidden');
+
+            // Button styling
+            document.querySelectorAll('.level-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-brand-700', 'shadow-2xs');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeBtn = document.getElementById(`levelBtn${levelNum}`);
+            activeBtn.classList.add('bg-white', 'text-brand-700', 'shadow-2xs');
+            activeBtn.classList.remove('text-slate-600');
+        }
+
+        // Interactive Practice Answer Checking with Immediate Positive Feedback & Hints
+        function checkAnswer(qId, selectedOption, isCorrect, feedbackMsg) {
+            const fbElement = document.getElementById(`fb_${qId}`);
+            
+            if (!fbElement) return;
+
+            fbElement.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-amber-100', 'text-amber-800', 'border-emerald-300', 'border-amber-300');
+
+            if (isCorrect) {
+                fbElement.classList.add('bg-emerald-100', 'text-emerald-800', 'border', 'border-emerald-300');
+                fbElement.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1.5"></i> <strong>Good job!</strong> ${feedbackMsg}`;
+                
+                // Add points once
+                if (!fbElement.dataset.scored) {
+                    score += 10;
+                    document.getElementById('userScore').innerText = score;
+                    fbElement.dataset.scored = "true";
+                }
+            } else {
+                fbElement.classList.add('bg-amber-100', 'text-amber-800', 'border', 'border-amber-300');
+                fbElement.innerHTML = `<i class="fa-solid fa-lightbulb text-amber-600 mr-1.5"></i> <strong>Almost there!</strong> ${feedbackMsg}`;
+            }
+        }
+
+        // Text To Speech API Integration
+        function toggleAudioSpeech() {
+            if (isSpeaking) {
+                stopSpeech();
+            } else {
+                startSpeech();
+            }
+        }
+
+        function startSpeech() {
+            if ('speechSynthesis' in window) {
+                const text = "Siti's Healthy Routine: Work, Study, and Stay Fit. " +
+                    "Siti is a 25-year-old student in Paket C. She works at a local bakery in the morning and studies English in the evening. Even though she has a busy schedule, Siti always prioritizes her health and well-being. " +
+                    "Every morning at 5:30 AM, Siti drinks a large glass of water and does light stretching exercises for 15 minutes. She eats a simple, healthy breakfast like oatmeal with fruit or boiled eggs before going to work. A nutritious breakfast gives me energy for the whole day, says Siti. " +
+                    "At night, after finishing her work and study modules, Siti turns off her smartphone 30 minutes before bedtime. Reading a printed book helps her relax and fall asleep easily. She believes that good sleep, healthy food, and daily exercise are key to manage work and study effectively.";
+
+                speechUtterance = new SpeechSynthesisUtterance(text);
+                speechUtterance.lang = 'en-US';
+                speechUtterance.rate = 0.9; // Slightly slower for language learners
+
+                speechUtterance.onend = function() {
+                    stopSpeech();
+                };
+
+                window.speechSynthesis.speak(speechUtterance);
+                isSpeaking = true;
+                
+                document.getElementById('audioBtnText').innerText = "Berhentikan Audio";
+                document.getElementById('audioBtn').classList.add('bg-brand-100', 'text-brand-700');
+            } else {
+                alert("Perangkat Anda tidak mendukung fitur pembaca audio sintetis.");
+            }
+        }
+
+        function stopSpeech() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+            isSpeaking = false;
+            document.getElementById('audioBtnText').innerText = "Dengarkan Teks (Audio)";
+            document.getElementById('audioBtn').classList.remove('bg-brand-100', 'text-brand-700');
+        }
+
+        // Submit Quiz Logic
+        function submitQuiz(e) {
+            e.preventDefault();
+
+            const answerKey = {
+                quiz_q1: 'B',
+                quiz_q2: 'A',
+                quiz_q3: 'A',
+                quiz_q4: 'B',
+                quiz_q5: 'A',
+                quiz_q6: 'B',
+                quiz_q7: 'A',
+                quiz_q8: 'A',
+                quiz_q9: 'A',
+                quiz_q10: 'A'
+            };
+
+            let correct = 0;
+            const total = 10;
+            const formData = new FormData(document.getElementById('quizForm'));
+
+            for (let [q, val] of formData.entries()) {
+                if (answerKey[q] === val) {
+                    correct++;
+                }
+            }
+
+            const calculatedScore = correct * 10;
+            const percent = Math.round((correct / total) * 100);
+
+            // Update Results UI
+            document.getElementById('correctCount').innerText = `${correct}/${total}`;
+            document.getElementById('finalScore').innerText = calculatedScore;
+            document.getElementById('percentage').innerText = `${percent}%`;
+
+            const categoryEl = document.getElementById('resultCategory');
+            const motivationalEl = document.getElementById('motivationalMessage');
+            const iconEl = document.getElementById('resultIcon');
+
+            if (percent >= 80) {
+                categoryEl.innerText = "Luar Biasa / Excellent!";
+                iconEl.className = "w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4";
+                motivationalEl.innerText = "Pemahaman membaca Anda sangat tajam! Anda mampu mengidentifikasi main idea, specific info, dan makna kata secara presisi. Siap untuk terus berkembang!";
+            } else if (percent >= 60) {
+                categoryEl.innerText = "Bagus Sekali / Good Job!";
+                iconEl.className = "w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4";
+                motivationalEl.innerText = "Hasil yang bagus! Anda sudah memahami sebagian besar isi bacaan. Sedikit ulasan kembali pada bagian kosakata akan membuat Anda lebih percaya diri!";
+            } else {
+                categoryEl.innerText = "Tetap Semangat / Keep Learning!";
+                iconEl.className = "w-16 h-16 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4";
+                motivationalEl.innerText = "Jangan berkecil hati! Membaca Bahasa Inggris adalah proses bertahap. Anda dapat membuka teks acuan dan mencoba kembali latihan untuk memperkuat pemahaman.";
+            }
+
+            // Move to Step 8 (Results)
+            goToStep(8);
+        }
+
+        // Reflection Form Handler
+        function finishReflection(e) {
+            e.preventDefault();
+            document.getElementById('reflectionSuccess').classList.remove('hidden');
+        }
+
+        // Initial setup on window load
+        window.onload = function() {
+            goToStep(1);
+        };
+    </script>
+</body>
+</html>
